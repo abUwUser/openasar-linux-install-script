@@ -29,10 +29,31 @@ for f in ${asarPaths[@]}; do
         fi
     fi
 done
+
+customPath() {
+    while true; do
+        read -p "Set a custom path: " discordAsar
+        if [[ -f $discordAsar ]]; then
+            break
+        else
+            echo File does not exist.
+        fi
+    done
+}
+
 if [ -z "$discordAsar" ]; then
-    echo "No discord installation found. Please install discord and try again."
-    exit 1
+    echo Could not find a discord path.
+    customPath
 fi
+
+while true; do
+    read -p "Found $discordAsar as the app.asar file of your discord installation. Do you wanna change? (Y/N) " yn
+    case $yn in
+        [Yy]* ) customPath; break;;
+        [Nn]* ) break;;
+        * ) ;;
+    esac
+done
 
 echo Using $discordAsar
 echo
