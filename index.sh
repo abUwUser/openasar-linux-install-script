@@ -28,13 +28,13 @@ asarPaths=(
     # "/var/lib/flatpak/app/com.discordapp.DiscordCanary/current/active/files/discord-canary/resources/app.asar" # not sure if that's the path for DiscordCanary on flatpak
 )
 
-for f in ${asarPaths[@]}; do
+for f in "${asarPaths[@]}"; do
     if [[ -f $f ]]; then
         if [ -z "$discordAsar" ]; then
             discordAsar=$f
         else
             while true; do
-                read -p "Multiple discord paths found. Do you want to install to $f instead of $discordAsar? (Y/N) " yn
+                read -r -p "Multiple discord paths found. Do you want to install to $f instead of $discordAsar? (Y/N) " yn
                 case $yn in
                     [Yy]* ) discordAsar=$f; break;;
                     [Nn]* ) break;;
@@ -47,7 +47,7 @@ done
 
 customPath() {
     while true; do
-        read -p "Set a custom path: " discordAsar
+        read -r -p "Set a custom path: " discordAsar
         if [[ -f $discordAsar ]]; then
             break
         else
@@ -62,7 +62,7 @@ if [ -z "$discordAsar" ]; then
 fi
 
 while true; do
-    read -p "Found $discordAsar as the app.asar file of your discord installation. Do you wanna change? (Y/N) " yn
+    read -r -p "Found $discordAsar as the app.asar file of your discord installation. Do you wanna change? (Y/N) " yn
     case $yn in
         [Yy]* ) customPath; break;;
         [Nn]* ) break;;
@@ -70,14 +70,14 @@ while true; do
     esac
 done
 
-echo Using $discordAsar
+echo "Using $discordAsar"
 echo
 
 echo Renaming old app.asar file
-sudo mv $discordAsar $discordAsar.og
-echo Renamed to $(basename $discordAsar.og)
+sudo mv "$discordAsar" "$discordAsar.og"
+echo Renamed to "$(basename "$discordAsar".og)"
 echo
 
 echo Copying openasar.asar to discord folder
-sudo cp openasar.asar $discordAsar
+sudo cp openasar.asar "$discordAsar"
 echo Copied successfully. You can now start Discord with OpenAsar
