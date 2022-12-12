@@ -25,7 +25,7 @@ asarPaths=(
     "/usr/lib/discord-canary/resources/app.asar"
     "/usr/lib64/discord-canary/resources/app.asar"
     "/usr/share/discord-canary/resources/app.asar"
-    # "/var/lib/flatpak/app/com.discordapp.DiscordCanary/current/active/files/discord-canary/resources/app.asar" # not sure if that's the path for DiscordCanary on flatpak
+    "/var/lib/flatpak/app/com.discordapp.DiscordCanary/current/active/files/discord-canary/resources/app.asar" # not sure if that's the path for DiscordCanary on flatpak, but people told me so that it is
 )
 
 for f in "${asarPaths[@]}"; do
