@@ -6,11 +6,26 @@ curl -L $downloadPath > openasar.asar
 echo
 
 asarPaths=(
+    # Stable
     "/opt/discord/resources/app.asar"
     "/usr/lib/discord/resources/app.asar"
     "/usr/lib64/discord/resources/app.asar"
     "/usr/share/discord/resources/app.asar"
     "/var/lib/flatpak/app/com.discordapp.Discord/current/active/files/discord/resources/app.asar"
+
+    # PTB
+    "/opt/discord-ptb/resources/app.asar"
+    "/usr/lib/discord-ptb/resources/app.asar"
+    "/usr/lib64/discord-ptb/resources/app.asar"
+    "/usr/share/discord-ptb/resources/app.asar"
+    # "/var/lib/flatpak/app/com.discordapp.DiscordPTB/current/active/files/discord-ptb/resources/app.asar" # not sure if that's the path for DiscordPTB on flatpak
+
+    # Canary
+    "/opt/discord-canary/resources/app.asar"
+    "/usr/lib/discord-canary/resources/app.asar"
+    "/usr/lib64/discord-canary/resources/app.asar"
+    "/usr/share/discord-canary/resources/app.asar"
+    # "/var/lib/flatpak/app/com.discordapp.DiscordCanary/current/active/files/discord-canary/resources/app.asar" # not sure if that's the path for DiscordCanary on flatpak
 )
 
 for f in ${asarPaths[@]}; do
